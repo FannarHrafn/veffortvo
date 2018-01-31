@@ -1,0 +1,21 @@
+var spaceship1 = new Object();
+spaceship1.name='Spaceracer';
+spaceship1.life=10;
+spaceship1.showname = function(){
+  console.log(this.name);
+};
+spaceship1.showname();
+var spaceship2 = Object.create(spaceship1);
+spaceship2.showname();
+spaceship2.name='Spaceturtle';
+spaceship2.showname();
+var spaceship3 = Object.create(spaceship1);
+spaceship3.name = 'Spacehare';
+
+spaceship1.prototype.speed=5;
+spaceship1.prototype.fly=function(){
+  this.speed+=1;
+};
+// console.log(spaceship1);
+// console.log(spaceship2.speed);
+spaceship1

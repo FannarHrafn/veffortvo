@@ -1,21 +1,63 @@
-var spaceship1 = new Object();
-spaceship1.name='Spaceracer';
-spaceship1.life=10;
-spaceship1.showname = function(){
-  console.log(this.name);
+//gerum constructor
+function SpaceShip(){
+  this.name='spaceracer';
+  this.life=10;
+  this.showname=function(){
+    console.log(this.name);
+  };
 };
-spaceship1.showname();
-var spaceship2 = Object.create(spaceship1);
+//bý til þrjú geimskip og breyti nöfnum tveggja
+var spaceship1 = new SpaceShip();
+var spaceship2 = new SpaceShip();
 spaceship2.showname();
 spaceship2.name='Spaceturtle';
 spaceship2.showname();
-var spaceship3 = Object.create(spaceship1);
+var spaceship3 = new SpaceShip();
 spaceship3.name = 'Spacehare';
 
-spaceship1.prototype.speed=5;
-spaceship1.prototype.fly=function(){
+//bæti við speed property og fly function
+SpaceShip.prototype.speed=5;
+SpaceShip.prototype.fly=function(){
   this.speed+=1;
 };
-// console.log(spaceship1);
-// console.log(spaceship2.speed);
-spaceship1
+//sýni breytingar
+spaceship1.fly();
+console.log(spaceship1);
+console.log(spaceship1.speed);
+//bæti við damage function
+var spaceship4 = new SpaceShip();
+spaceship4.dmg=function(){
+  this.life-=1;
+};
+//sýni breytingar
+spaceship4.dmg();
+console.log(spaceship4);
+console.log(spaceship4.life);
+/*
+Spurning 2. Inheritance
+Erfðir er það sem nýtt object fær frá foreldra function/object sem þú skapaðir það með
+hvort sem það var með Object.create(x) eða var x = new y() eða x.call()
+Erfðir geta verið functions, attributes og properties
+
+Spurning 3. Classes
+klasar í javascript eru víst frekar óþarfi og er bara þarna til að gera það léttara
+að halda utan um fleiri og fleiri functions og constructors með klösum og sub-klösum
+*/
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+  // Getter
+  get area() {
+    return this.calcArea();
+  }
+  // Method
+  calcArea() {
+    return this.height * this.width;
+  }
+}
+
+const square = new Rectangle(10, 10);
+
+console.log(square.area); // 100

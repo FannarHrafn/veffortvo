@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link href="/static/css/style.css" rel="stylesheet">
+    <title>Bókalisti</title>
+</head>
+<body>
+ <h1 class="title">Bókalisti</h1>
+  {% for book in booklist %}
+  <div>
+      <a href="./book/{{ book.isbn }}">{{ book.name }}</a>
+  </div>
+  {% endfor %}
+</body>
+</html>
